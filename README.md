@@ -1,96 +1,111 @@
-# OPNet Builder
+# OPNet Builder Persona
 
-**The definitive AI development toolkit for building on Bitcoin Layer 1 with OP_NET.**
+A battle-tested AI persona for building on OPNet — Bitcoin L1 smart contracts, tokens, NFTs, DEX pools, and full-stack dApps.
 
 ## What This Is
 
-OPNet Builder is an AI persona that turns your coding assistant into an expert OPNet developer. It carries 3MB+ of documentation, templates, guidelines, and battle-tested patterns — everything needed to build smart contracts, frontends, backends, and plugins on Bitcoin Layer 1.
+This is NOT documentation. It's an **operating identity** for AI agents. Load this persona and the agent becomes a competent OPNet developer who:
 
-## What It Does
+- Writes working AssemblyScript smart contracts
+- Builds React frontends with WalletConnect
+- Deploys to regtest and mainnet
+- Knows every gotcha, bug, and workaround from 10+ real deployments
+- Warns about footguns BEFORE you hit them
 
-- **Scaffolds complete projects** — OP20 tokens, OP721 NFTs, React frontends, Node.js backends, node plugins
-- **Enforces correct patterns** — SafeMath, CSV timelocks, verify-don't-custody, TypeScript Law
-- **Audits your code** — OPNet-specific vulnerability detection including serialization mismatches, cache coherence, and Bitcoin-specific attack vectors
-- **Knows the full API** — 151 documentation files covering every OPNet package, type, and interface
-- **Ships production code** — lint, typecheck, build, and test verification built into the workflow
+## Installation
 
-## Install
-
-See [SETUP.md](SETUP.md) for installation instructions for Claude Code, Cursor, and Windsurf.
-
-## Compatible With
-
-| Platform | Status |
-|----------|--------|
-| Claude Code | Fully supported |
-| Cursor | Fully supported |
-| Windsurf | Fully supported |
-
-## Slash Commands
-
-| Command | Description |
-|---------|-------------|
-| `/new-token` | Scaffold a complete OP20 token project (contract + tests + frontend) |
-| `/new-nft` | Scaffold a complete OP721 NFT project (contract + tests + frontend) |
-| `/audit` | Run a security audit against OPNet audit guidelines |
-| `/deploy` | Build, lint, typecheck, test, and deploy workflow |
-
-## Blueprints
-
-| Blueprint | Description |
-|-----------|-------------|
-| `op20-token` | Complete OP20 fungible token — AssemblyScript contract, unit tests, React frontend |
-| `op721-nft` | Complete OP721 NFT collection — AssemblyScript contract, unit tests, React frontend |
-| `staking-contract` | OP20 staking with time-based rewards — contract, tests, React frontend |
-| `swap-ui` | MotoSwap swap interface — React frontend connecting to the Router |
-| `portfolio-tracker` | Multi-token portfolio dashboard — React frontend with balance tracking |
-
-## What's Inside
-
-```
-opnet-builder/
-├── persona.yaml          # Package metadata
-├── PERSONA.md            # AI identity and behavioral rules
-├── SETUP.md              # Installation instructions
-├── commands/             # 4 slash commands
-├── skills/
-│   ├── SKILL.md          # Master orchestrator (mandatory reading lists, workflow rules)
-│   ├── guidelines/       # 8 development guideline files
-│   ├── docs/             # 153 API reference and documentation files
-│   └── templates/        # 20 working code templates
-├── memory/               # Project state tracking templates
-├── examples/             # Sample interactions
-└── blueprints/           # Project scaffolding blueprints
+### For personas.sh
+```bash
+personas install bob-persona
 ```
 
-## Built With OPNet Builder
+### Manual Installation
+Copy this directory to your AI agent's context/persona directory. Load `PERSONA.md` as the primary identity file.
 
-Real projects built using this toolkit:
+### For Cursor / Claude Projects
+1. Copy all files into your project's `.cursor/` or context directory
+2. Reference `PERSONA.md` in your system prompt or rules file
+3. The agent will automatically pick up patterns and blueprints
 
-| Project | What It Does | Stack |
-|---------|-------------|-------|
-| **OP_Scribe** | File proof-of-existence on Bitcoin L1 | Contract + IPFS backend + React frontend |
-| **OpSea** | OP721 NFT marketplace (Magic Eden style) | Contract + React frontend |
-| **opSwitch** | Dead man's switch for Bitcoin inheritance | Contract + React frontend |
-| **Beacon Oracle** | Chainlink price feed relay to Bitcoin L1 | Contract + off-chain relayer + React frontend |
-| **$SKIZO** | Bipolar memecoin with mood-based tokenomics | OP20 contract with custom mechanics |
-| **OPNet Punks** | OP721 NFT collection | Contract + deploy script |
+### For ChatGPT Custom Instructions
+Copy the contents of `PERSONA.md` and `memory/patterns.md` into your custom instructions. Add specific blueprints as needed for the task.
 
-These were all built by community developers using the OPNet Builder skill in AI coding assistants.
+## File Structure
 
-## Key Features
+```
+PERSONA.md                    — Core identity, rules, communication style
+README.md                     — This file
 
-- **TypeScript-only** — No raw JavaScript, ever. Strict mode enforced.
-- **AssemblyScript contracts** — Compile to WebAssembly, run deterministically on Bitcoin L1
-- **OP_WALLET integration** — ML-DSA quantum-resistant signatures, full OPNet support
-- **hyper-express backends** — Fastest Node.js HTTP server, mandatory for all APIs
-- **Comprehensive testing** — Unit test framework with Blockchain mocking
-- **Security-first** — Audit checklists, vulnerability patterns, mandatory SafeMath
+memory/
+  patterns.md                 — Hard-won development patterns (35+ gotchas)
+  bugs.md                     — Known bugs with workarounds (18+ entries)
 
-## Author
+blueprints/
+  op20-token.md               — Build and deploy an OP20 fungible token
+  frontend-dapp.md            — React frontend with WalletConnect
+  nativeswap-pool.md          — Create a NativeSwap liquidity pool
+  op721-nft.md                — Build an OP721 NFT collection
 
-Danny Plainview
+docs/
+  architecture.md             — OPNet architecture (consensus, epochs, verify-don't-custody)
+  contract-patterns.md        — Smart contract patterns (storage, SafeMath, events, selectors)
+  wallet-integration.md       — Wallet integration (OPWallet, WalletConnect, signing)
+  deployment.md               — Deployment guide (regtest, mainnet, IPFS, .btc domains)
+```
+
+## What Makes This Different
+
+Most AI coding assistants generate **plausible-looking** code. This persona generates **working** code because it encodes:
+
+1. **Exact package versions** — `opnet@1.8.1-beta.13`, not "latest"
+2. **Constructor signatures** — `StoredU256(pointer, EMPTY_POINTER)`, not `StoredU256(pointer, u256.Zero)`
+3. **API quirks** — `increaseAllowance()` not `approve()`, `response.result` not `response.txid`
+4. **Mandatory CSS fixes** — WalletConnect modal positioning
+5. **Library substitutions** — `@btc-vision/bitcoin` not `bitcoinjs-lib`
+6. **Signing rules** — `null` on frontend, actual keypairs on backend
+7. **Storage gotchas** — unique pointers, field-level initialization, EMPTY_POINTER
+8. **Transaction sequencing** — approve must confirm before pool creation
+9. **BigInt limitations** — `Number()` for getBlock, `fromString()` for large u256
+10. **18 documented bugs** with exact workarounds
+
+## Quick Reference — Top 10 Gotchas
+
+| # | Gotcha | Fix |
+|---|--------|-----|
+| 1 | StoredU256 subPointer | Use `EMPTY_POINTER`, not `u256.Zero` |
+| 2 | StoredAddress params | 1 param only `(pointer)`, no default |
+| 3 | ABIDataTypes in contracts | Globally injected, never import |
+| 4 | OP20 allowance | `increaseAllowance()`, not `approve()` |
+| 5 | getBlock() BigInt | Convert to `Number()` first |
+| 6 | Frontend signing | `signer: null, mldsaSigner: null` |
+| 7 | WalletConnect modal | Add CSS fix (position: fixed overlay) |
+| 8 | Package imports | `@btc-vision/bitcoin`, never `bitcoinjs-lib` |
+| 9 | UTXO queries | Always `optimize: false` |
+| 10 | u256 big numbers | `u256.fromString()`, not `fromU64()` |
+
+## Tech Stack
+
+- **Smart Contracts:** AssemblyScript → WebAssembly (via @btc-vision/assemblyscript)
+- **Runtime:** @btc-vision/btc-runtime
+- **Frontend:** React + TypeScript + opnet + @btc-vision/walletconnect
+- **Backend:** hyper-express + opnet + @btc-vision/transaction
+- **Network:** Bitcoin L1 via OPNet consensus layer
+- **RPC:** JSONRpcProvider from opnet package
+
+## Package Versions (Mandatory)
+
+```
+opnet: 1.8.1-beta.13
+@btc-vision/transaction: 1.8.0-beta.10
+@btc-vision/bitcoin: 7.0.0-alpha.11
+@btc-vision/walletconnect: latest
+```
+
+## RPC Endpoints
+
+- **Regtest:** https://regtest.opnet.org
+- **Mainnet:** https://mainnet.opnet.org
 
 ## License
 
-MIT
+This persona package is provided as-is for AI agent configuration. Use it to build on OPNet.
