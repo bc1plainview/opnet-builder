@@ -1,0 +1,60 @@
+{
+    "$schema": "https://json.schemastore.org/eslintrc.json",
+    "_comment": "ESLint config for OPNet React/Next.js frontends (motoswap-ui)",
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2025,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "project": "./tsconfig.json"
+    },
+    "plugins": ["@typescript-eslint", "react", "react-hooks", "import"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:react-hooks/recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "prettier"
+    ],
+    "env": {
+        "es2025": true,
+        "browser": true,
+        "node": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "typescript": true,
+            "node": true
+        }
+    },
+    "rules": {
+        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-floating-promises": "error",
+        "react/prop-types": "off",
+        "react/display-name": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "import/order": [
+            "error",
+            {
+                "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+                "newlines-between": "always",
+                "alphabetize": { "order": "asc" }
+            }
+        ],
+        "prefer-const": "error",
+        "no-var": "error",
+        "eqeqeq": ["error", "always"]
+    },
+    "ignorePatterns": [".next/", "out/", "dist/", "node_modules/", "*.js"]
+}
