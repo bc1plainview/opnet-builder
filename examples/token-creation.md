@@ -101,8 +101,9 @@ After the contract compiles to `.wasm`:
 ```typescript
 import { TransactionFactory } from '@btc-vision/transaction';
 import { JSONRpcProvider } from 'opnet';
+import { networks } from '@btc-vision/bitcoin';
 
-const provider = new JSONRpcProvider('https://regtest.opnet.org');
+const provider = new JSONRpcProvider('https://regtest.opnet.org', networks.regtest);
 
 // Use TransactionFactory — NEVER raw PSBTs
 const deploymentTx = await TransactionFactory.createDeployment({

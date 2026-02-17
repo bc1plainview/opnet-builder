@@ -112,16 +112,10 @@ import { JSONRpcProvider } from 'opnet';
 import { networks } from '@btc-vision/bitcoin';
 
 // Regtest
-const provider = new JSONRpcProvider({
-    url: 'https://regtest.opnet.org',
-    network: networks.regtest,
-});
+const provider = new JSONRpcProvider('https://regtest.opnet.org', networks.regtest);
 
 // Mainnet
-const provider = new JSONRpcProvider({
-    url: 'https://mainnet.opnet.org',
-    network: networks.bitcoin,
-});
+const provider = new JSONRpcProvider('https://mainnet.opnet.org', networks.bitcoin);
 ```
 
 ### OP_WALLET

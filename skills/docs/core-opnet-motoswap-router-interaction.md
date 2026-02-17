@@ -15,10 +15,7 @@ MotoSwap Router handles OP20-to-OP20 token swaps. Unlike NativeSwap (BTC-to-OP20
 import { getContract, IMotoswapRouterContract, MOTOSWAP_ROUTER_ABI, JSONRpcProvider } from 'opnet';
 import { networks } from '@btc-vision/bitcoin';
 
-const provider = new JSONRpcProvider({
-    url: 'https://regtest.opnet.org',
-    network: networks.regtest,
-});
+const provider = new JSONRpcProvider('https://regtest.opnet.org', networks.regtest);
 
 // Get typed Router contract instance
 const router = getContract<IMotoswapRouterContract>(

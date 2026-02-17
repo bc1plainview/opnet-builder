@@ -97,20 +97,26 @@ Use the contract's `balanceOf()` and `tokenOfOwnerByIndex()` methods via the opn
 
 ```typescript
 import { JSONRpcProvider, getContract } from 'opnet';
+import { networks } from '@btc-vision/bitcoin';
 import { BitcoinArtifactsABI } from './abi/BitcoinArtifactsABI.js';
 
-const provider = new JSONRpcProvider('https://regtest.opnet.org');
-const contract = getContract(contractAddress, BitcoinArtifactsABI, provider, network, senderAddress);
+const provider = new JSONRpcProvider('https://regtest.opnet.org', networks.regtest);
+const contract = getContract(contractAddress, BitcoinArtifactsABI, provider, networks.regtest, senderAddress);
 
-// Get user's NFT count
-const balanceResult = await contract.balanceOf(ownerAddress);
-const balance = balanceResult.decoded.balance;
+// Contract calls throw on revert — always use try/catch
+try {
+    // Get user's NFT count
+    const balanceResult = await contract.balanceOf(ownerAddress);
+    const balance = balanceResult.decoded.balance;
 
-// Get each token ID
-const ownedTokens: bigint[] = [];
-for (let i = 0n; i < balance; i++) {
-    const tokenResult = await contract.tokenOfOwnerByIndex(ownerAddress, i);
-    ownedTokens.push(tokenResult.decoded.tokenId);
+    // Get each token ID
+    const ownedTokens: bigint[] = [];
+    for (let i = 0n; i < balance; i++) {
+        const tokenResult = await contract.tokenOfOwnerByIndex(ownerAddress, i);
+        ownedTokens.push(tokenResult.decoded.tokenId);
+    }
+} catch (error) {
+    console.error('Contract call failed:', error);
 }
 ```
 

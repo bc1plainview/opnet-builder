@@ -16,10 +16,7 @@ NativeSwap is OPNet's BTC-to-OP20 swap primitive. It uses virtual reserves (AMM 
 import { getContract, JSONRpcProvider } from 'opnet';
 import { Address, networks } from '@btc-vision/bitcoin';
 
-const provider = new JSONRpcProvider({
-    url: 'https://regtest.opnet.org',
-    network: networks.regtest,
-});
+const provider = new JSONRpcProvider('https://regtest.opnet.org', networks.regtest);
 
 // 1. First approve the NativeSwap contract to spend your tokens
 const tokenContract = getContract<IOP20Contract>(
