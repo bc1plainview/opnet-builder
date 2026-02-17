@@ -1,0 +1,39 @@
+{
+    "$schema": "https://json.schemastore.org/eslintrc.json",
+    "_comment": "ESLint config for OPNet AssemblyScript smart contracts (btc-runtime)",
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2025,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "env": {
+        "es2025": true
+    },
+    "rules": {
+        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/strict-boolean-expressions": "error",
+        "@typescript-eslint/no-floating-promises": "error",
+        "no-restricted-syntax": [
+            "error",
+            {
+                "selector": "TSTypeReference[typeName.name=/^(f32|f64|Float32Array|Float64Array)$/]",
+                "message": "Floating-point types are prohibited in OPNet contracts. Use u128/u256 for all arithmetic."
+            }
+        ],
+        "no-bitwise": "off",
+        "prefer-const": "error",
+        "no-var": "error",
+        "eqeqeq": ["error", "always"]
+    },
+    "ignorePatterns": ["build/", "node_modules/", "*.wasm"]
+}

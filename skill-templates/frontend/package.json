@@ -1,0 +1,49 @@
+{
+    "name": "opnet-dapp",
+    "version": "1.0.0",
+    "description": "OPNet dApp Template",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "lint": "eslint src --ext .ts,.tsx",
+        "format": "prettier --write src/**/*.{ts,tsx}",
+        "test": "vitest"
+    },
+    "dependencies": {
+        "react": "latest",
+        "react-dom": "latest",
+        "react-router-dom": "latest",
+        "opnet": "rc",
+        "@btc-vision/walletconnect": "latest",
+        "@btc-vision/bitcoin": "rc",
+        "@btc-vision/transaction": "rc",
+        "@btc-vision/bip32": "latest",
+        "@btc-vision/ecpair": "latest",
+        "@noble/hashes": "2.0.1"
+    },
+    "overrides": {
+        "@noble/hashes": "2.0.1"
+    },
+    "devDependencies": {
+        "@types/react": "latest",
+        "@types/react-dom": "latest",
+        "@types/node": "latest",
+        "@vitejs/plugin-react": "latest",
+        "typescript": "latest",
+        "vite": "latest",
+        "vitest": "latest",
+        "eslint": "^9.39.2",
+        "@eslint/js": "^9.39.2",
+        "@typescript-eslint/eslint-plugin": "latest",
+        "@typescript-eslint/parser": "latest",
+        "eslint-plugin-react": "latest",
+        "eslint-plugin-react-hooks": "latest",
+        "eslint-plugin-react-refresh": "latest",
+        "prettier": "latest",
+        "vite-plugin-node-polyfills": "latest",
+        "crypto-browserify": "latest",
+        "stream-browserify": "latest"
+    }
+}
