@@ -76,25 +76,82 @@ Audit smart contracts, frontends, backends, and plugins against OPNet-specific v
 ### Q&A / Architecture
 Answer questions about OPNet architecture, Bitcoin L1 smart contracts, consensus protocol design, two-address systems, airdrop patterns, NativeSwap mechanics, and more. Always reference the actual docs — never guess.
 
+## Getting Started on Regtest
+
+All development starts on regtest. Here's how to get set up:
+
+### RPC Endpoints
+- **Regtest**: `https://regtest.opnet.org`
+- **Mainnet**: `https://mainnet.opnet.org` (DO NOT deploy untested code here)
+
+### Getting Test BTC
+1. Generate a wallet using the OPNet CLI or any Bitcoin wallet that supports regtest
+2. Request test BTC from the OPNet Discord faucet channel
+3. Or use the regtest faucet at the OPNet developer portal (coming soon)
+
+### Deploy Workflow
+1. Write your contract (AssemblyScript)
+2. Compile: `npm run build` → produces `.wasm` in `build/`
+3. Deploy to regtest using the OPNet CLI or deployment script
+4. Test thoroughly on regtest before ANY mainnet deployment
+
+### Known Regtest Contracts
+These are already deployed on regtest for testing:
+- **MotoSwap Router**: For OP20-to-OP20 swaps
+- **MotoSwap Factory**: For creating new trading pairs
+- **NativeSwap**: For BTC-to-OP20 swaps
+- **MOTO Token**: The native OPNet utility token
+
+Query these via the provider to test your integrations.
+
 ## Integrations
 
 ### OPNet JSON-RPC Provider
 ```typescript
 import { JSONRpcProvider } from 'opnet';
-const provider = new JSONRpcProvider('https://regtest.opnet.org');
+import { networks } from '@btc-vision/bitcoin';
+
+// Regtest
+const provider = new JSONRpcProvider({
+    url: 'https://regtest.opnet.org',
+    network: networks.regtest,
+});
+
+// Mainnet
+const provider = new JSONRpcProvider({
+    url: 'https://mainnet.opnet.org',
+    network: networks.bitcoin,
+});
 ```
 
 ### OP_WALLET
 ```typescript
-import { WalletConnectProvider, useWalletConnect } from '@btc-vision/walletconnect';
-const { connectToWallet, publicKey, hashedMLDSAKey } = useWalletConnect();
+import { OPWalletProvider, useOPWallet } from '@btc-vision/opwallet';
+
+const { connect, disconnect, address, publicKey, mldsaPublicKey, isConnected } = useOPWallet();
+
+// Connect
+await connect();
+
+// Get user's address for contract interactions
+import { Address } from 'opnet';
+const senderAddress = Address.fromString(mldsaPublicKey, publicKey);
 ```
 
 ### Contract Interaction
 ```typescript
 import { getContract } from 'opnet';
 const contract = getContract(address, abi, provider, network, senderAddress);
-const result = await contract.someMethod(param1, param2);
+
+// Contract calls now THROW on revert (opnet 1.8.1+)
+// You MUST use try/catch
+try {
+    const result = await contract.someMethod(param1, param2);
+    // Success — proceed with result
+} catch (error) {
+    // Revert — handle the error
+    console.error('Contract call reverted:', error);
+}
 ```
 
 ## Key Principles

@@ -54,13 +54,22 @@ blueprints:
   - name: op721-nft
     description: Complete OP721 NFT collection — contract, tests, and React frontend
     path: blueprints/op721-nft/
+  - name: staking-contract
+    description: OP20 staking contract with time-based rewards — contract, tests, and React frontend
+    path: blueprints/staking-contract/
+  - name: swap-ui
+    description: MotoSwap swap interface — React frontend connecting to the Router
+    path: blueprints/swap-ui/
+  - name: portfolio-tracker
+    description: Multi-token portfolio dashboard — React frontend with balance tracking
+    path: blueprints/portfolio-tracker/
 
 memory:
   - memory/project-state.md
   - memory/patterns.md
 
 highlights:
-  - "3MB+ of comprehensive OPNet documentation, guidelines, and API references"
+  - "3MB+ of comprehensive OPNet documentation — 153 docs, 8 guidelines, 20 templates"
   - "Battle-tested templates for OP20 tokens, OP721 NFTs, frontends, backends, and plugins"
   - "Strict TypeScript Law enforcement — no `any`, no raw JS, no shortcuts"
   - "Built-in security audit workflow with OPNet-specific vulnerability patterns"

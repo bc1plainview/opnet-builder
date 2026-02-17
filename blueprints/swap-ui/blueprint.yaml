@@ -1,0 +1,15 @@
+name: swap-ui
+display_name: Swap UI
+description: >
+  MotoSwap swap interface — React frontend connecting to the Router for OP20-to-OP20 token swaps.
+  Built on Bitcoin Layer 1 with OP_NET.
+version: 1.0.0
+category: frontend
+author: Danny Plainview
+
+tags:
+  - bitcoin
+  - defi
+  - swap
+  - motoswap
+  - frontend

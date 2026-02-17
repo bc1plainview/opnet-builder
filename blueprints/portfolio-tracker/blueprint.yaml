@@ -1,0 +1,15 @@
+name: portfolio-tracker
+display_name: Portfolio Tracker
+description: >
+  Multi-token portfolio dashboard — React frontend with balance tracking for OPNet tokens.
+  Built on Bitcoin Layer 1 with OP_NET.
+version: 1.0.0
+category: frontend
+author: Danny Plainview
+
+tags:
+  - bitcoin
+  - portfolio
+  - dashboard
+  - op20
+  - frontend

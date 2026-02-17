@@ -41,6 +41,9 @@ See [SETUP.md](SETUP.md) for installation instructions for Claude Code, Cursor, 
 |-----------|-------------|
 | `op20-token` | Complete OP20 fungible token — AssemblyScript contract, unit tests, React frontend |
 | `op721-nft` | Complete OP721 NFT collection — AssemblyScript contract, unit tests, React frontend |
+| `staking-contract` | OP20 staking with time-based rewards — contract, tests, React frontend |
+| `swap-ui` | MotoSwap swap interface — React frontend connecting to the Router |
+| `portfolio-tracker` | Multi-token portfolio dashboard — React frontend with balance tracking |
 
 ## What's Inside
 
@@ -53,12 +56,27 @@ opnet-builder/
 ├── skills/
 │   ├── SKILL.md          # Master orchestrator (mandatory reading lists, workflow rules)
 │   ├── guidelines/       # 8 development guideline files
-│   ├── docs/             # 151 API reference and documentation files
-│   └── templates/        # 32 working code templates
+│   ├── docs/             # 153 API reference and documentation files
+│   └── templates/        # 20 working code templates
 ├── memory/               # Project state tracking templates
 ├── examples/             # Sample interactions
 └── blueprints/           # Project scaffolding blueprints
 ```
+
+## Built With OPNet Builder
+
+Real projects built using this toolkit:
+
+| Project | What It Does | Stack |
+|---------|-------------|-------|
+| **OP_Scribe** | File proof-of-existence on Bitcoin L1 | Contract + IPFS backend + React frontend |
+| **OpSea** | OP721 NFT marketplace (Magic Eden style) | Contract + React frontend |
+| **opSwitch** | Dead man's switch for Bitcoin inheritance | Contract + React frontend |
+| **Beacon Oracle** | Chainlink price feed relay to Bitcoin L1 | Contract + off-chain relayer + React frontend |
+| **$SKIZO** | Bipolar memecoin with mood-based tokenomics | OP20 contract with custom mechanics |
+| **OPNet Punks** | OP721 NFT collection | Contract + deploy script |
+
+These were all built by community developers using the OPNet Builder skill in AI coding assistants.
 
 ## Key Features
 

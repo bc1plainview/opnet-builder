@@ -1,5 +1,20 @@
 # OPNet Project Setup Guidelines
 
+## Package Versions Change Frequently
+
+OPNet packages are in active beta. Versions in this guide were correct at time of writing but may be outdated.
+
+**Always verify latest versions before installing:**
+```bash
+npm info opnet versions --json | tail -5
+npm info @btc-vision/transaction versions --json | tail -5
+npm info @btc-vision/bitcoin versions --json | tail -5
+```
+
+If a version listed here doesn't exist on npm, use the latest available beta.
+
+---
+
 **CRITICAL: Read this FIRST before creating any OPNet project.**
 
 This document covers package versions, configurations, and project setup for ALL OPNet project types.

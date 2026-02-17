@@ -167,6 +167,8 @@ OPNet development has:
 | 13 | `docs/core-transaction-transaction-factory-interfaces.md` | **Advanced TX params (fees, notes, anchors)** |
 | 14 | `docs/clients-walletconnect-README.md` | Wallet connection |
 | 13 | `docs/frontend-motoswap-ui-README.md` | **THE STANDARD** - Reference implementation |
+| 14 | `docs/core-opnet-nativeswap-interaction.md` | NativeSwap pool creation, reservations, and swap execution |
+| 15 | `docs/core-opnet-motoswap-router-interaction.md` | MotoSwap Router OP20-to-OP20 swap patterns |
 
 ---
 
