@@ -127,15 +127,18 @@ const provider = new JSONRpcProvider({
 ### OP_WALLET
 ```typescript
 import { OPWalletProvider, useOPWallet } from '@btc-vision/opwallet';
+import { Address } from 'opnet';
 
-const { connect, disconnect, address, publicKey, mldsaPublicKey, isConnected } = useOPWallet();
+const { connect, disconnect, address, publicKey, mldsaPublicKey, hashedMLDSAKey, isConnected } = useOPWallet();
 
 // Connect
 await connect();
 
-// Get user's address for contract interactions
-import { Address } from 'opnet';
-const senderAddress = Address.fromString(mldsaPublicKey, publicKey);
+// CRITICAL: Address.fromString() needs the 32-byte HASHED ML-DSA key, NOT the raw key
+// - hashedMLDSAKey = 0x-prefixed hex string, 32 bytes (SHA256 hash of ML-DSA pubkey)
+// - publicKey = 0x-prefixed hex string, 33 bytes (Bitcoin tweaked pubkey)
+// - mldsaPublicKey = raw ML-DSA key (~2500 bytes) — NEVER pass this to Address.fromString()
+const senderAddress = Address.fromString(hashedMLDSAKey, publicKey);
 ```
 
 ### Contract Interaction
